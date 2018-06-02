@@ -1,0 +1,44 @@
+## variables ->
+## path
+## port
+
+## static website
+server {
+       listen 80;
+       listen 443 ssl;
+       ssl_certificate <path>/cert.pem;
+       ssl_certificate_key <path>/key.pem;
+       root <path>;
+       index index.html index.htm;
+
+       # Make site accessible domain
+       server_name www.example.com example.com;
+
+       location / {
+               # First attempt to serve request as file, then
+               # as directory, then fall back to displaying a 404.
+               try_files $uri $uri/ =404;
+               # Uncomment to enable naxsi on this location
+               # include /etc/nginx/naxsi.rules
+       }
+}
+
+## reverse proxy
+
+server {
+    listen 80;
+    listen 443 ssl;
+    ssl_certificate <path>/cert.pem;
+    ssl_certificate_key <path>/key.pem;
+
+    server_name www.example.com example.com;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header   Host      $http_host;
+        proxy_pass http://localhost:<port>;
+    }
+}
+
+
+
