@@ -34,9 +34,17 @@ install_nodejs() {
 
                 # install node.js
                 `echo sudo apt-get install nodejs`;
+                `echo sudo apt-get install npm`;
                 # install nvm
                  `echo curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;`
                  `export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";`
+}
+
+install_nodemodules(){
+        echo "Installing essential node modules";
+        `echo npm i -g gulp`;
+        `echo npm i -g bower`;
+        `echo npm i -g pm2`;
 }
 
 
@@ -50,6 +58,8 @@ install_mongodb;
 install_redis;
 
 install_nodejs;
+
+install_nodemodules;
 
 echo "All done";
 
