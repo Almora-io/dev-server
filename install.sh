@@ -37,7 +37,8 @@ install_nodejs() {
                 `echo sudo apt-get install npm`;
                 # install nvm
                  `echo curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;`
-                 `echo export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";`
+                 `echo export NVM_DIR="$HOME/.nvm"`
+                 `echo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm`
 }
 
 install_nodemodules(){
