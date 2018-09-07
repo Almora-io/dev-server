@@ -1,8 +1,8 @@
 #!/bin/bash
 
-update() {
+install_update() {
         echo "Updating";
-        `echo sudo apt-get update`;
+        `echo sudo apt-get update && sudo apt-get upgrade`;
         `echo export LC_ALL=C;`
 }
 
@@ -49,7 +49,7 @@ install_nodemodules(){
 
 
 
-install_git;
+install_update;
 
 install_nginx;
 
